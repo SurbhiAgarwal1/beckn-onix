@@ -198,6 +198,11 @@ func (c *DeDiRegistryClient) Lookup(ctx context.Context, req *model.Subscription
 	return []model.Subscription{subscription}, nil
 }
 
+// Subscribe implements RegistryLookup interface - currently not supported for DeDi registry.
+func (c *DeDiRegistryClient) Subscribe(ctx context.Context, req *model.Subscription) error {
+	return fmt.Errorf("subscribe operation not supported for DeDi registry")
+}
+
 // parseTime converts string timestamp to time.Time
 func parseTime(timeStr string) time.Time {
 	if timeStr == "" {
